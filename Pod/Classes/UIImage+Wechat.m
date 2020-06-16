@@ -17,6 +17,13 @@
     return [self wcCompres:NO];
 }
 
+- (NSData *)wcImageCompres:(Boolean)isSession
+{
+    CGSize size = [self wxImageSize:isSession];
+    UIImage *reImage = [self resizedImage:size];
+    return UIImageJPEGRepresentation(reImage, 0.5);
+}
+
 /**
  wechat image compress
  
@@ -25,10 +32,7 @@
  @return thumb image
  */
 - (UIImage *)wcCompres:(Boolean)isSession {
-    CGSize size = [self wxImageSize:isSession];
-    UIImage *reImage = [self resizedImage:size];
-    NSData *data = UIImageJPEGRepresentation(reImage, 0.5);
-    return [[UIImage alloc] initWithData:data];
+    return [[UIImage alloc] initWithData:[self wcImageCompres:isSession]];
 }
 
 

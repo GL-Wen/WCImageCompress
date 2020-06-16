@@ -19,4 +19,9 @@
  */
 - (UIImage *)wcTimelineCompress;
 
+/**
+  压缩返回图片流
+*/
+- (NSData *)wcImageCompres:(Boolean)isSession;
+
 @end
